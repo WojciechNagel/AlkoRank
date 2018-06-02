@@ -1,0 +1,82 @@
+﻿@model IEnumerable<WebApplication11.Models.Whisky>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Whiskies</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+
+    @using (Html.BeginForm())
+    {
+        <p> Nazwa: @Html.TextBox("SearchString")   <input type="submit" value="Szukaj" /></p>
+    }
+</p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nazwa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kategoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Oko)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Język)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Finisz)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ocena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cena)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nazwa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kategoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Oko)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Język)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Finisz)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ocena)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cena)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.WhiskyID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.WhiskyID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.WhiskyID })
+                </td>
+            </tr>
+        }
+
+    </table>
